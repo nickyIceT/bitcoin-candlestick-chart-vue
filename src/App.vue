@@ -71,10 +71,10 @@ export default {
             ...this.chart.onchart[0],
             data: [
               [
-                1658850300000, // timestamp (then trade occured)
+                1658850600000, // timestamp (then trade occured)
                 1, // state: 0 = idle, 1 = long
-                20781.11, // filled price
-                500,
+                20753.11, // filled price
+                50,
               ],
             ],
           },

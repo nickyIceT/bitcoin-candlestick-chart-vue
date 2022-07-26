@@ -21,7 +21,7 @@ export default {
           ctx.fillStyle = '#FEFBF6'
           ctx.font = '16px Arial'
           ctx.textAlign = 'center'
-          ctx.fillText(p[3], x, y - 25)
+          ctx.fillText(`Long +${p[3]}$`, x, y - 25)
         }
       }
     },
