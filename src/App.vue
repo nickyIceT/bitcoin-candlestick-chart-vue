@@ -14,7 +14,7 @@
 
 <script>
 import TradingVue from "trading-vue-js";
-import PerfectTrades from "./PerfectTrades.js";
+import PerfectTrades from "./Overlays/PerfectTrades.js";
 import axios from "axios";
 export default {
   name: "app",
@@ -50,7 +50,7 @@ export default {
     };
   },
   methods: {
-    onResize(event) {
+    onResize() {
       this.width = window.innerWidth;
       this.height = window.innerHeight;
     },
