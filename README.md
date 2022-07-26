@@ -11,7 +11,7 @@
     <a href="#"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://chart.nickyicet.com">View Demo</a>
   </p>
 </div>
 
