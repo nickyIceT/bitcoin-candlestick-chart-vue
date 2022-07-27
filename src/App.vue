@@ -65,10 +65,11 @@ export default {
       if (historyLiquidation.data) {
         historyLiquidation.data.data.map((item) => {
           const time = new Date(item.date).getTime();
+          const price = item.symbol === "#BTC" ? item.price : item.btcPrice;
           historyData.push([
             time,
             item.type,
-            item.btcPrice,
+            price,
             item.liquidation,
             item.symbol,
           ]);
