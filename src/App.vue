@@ -24,7 +24,7 @@ export default {
     this.getInitialData();
     setInterval(() => {
       this.getInitialData();
-    }, 6 * 1000);
+    }, 10 * 1000);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.onResize);
@@ -56,8 +56,26 @@ export default {
     },
     async getInitialData() {
       const result = await axios.get("https://api.binance.com/api/v3/klines", {
-        params: { symbol: "BTCUSDT", interval: "5m" },
+        params: { symbol: "BTCUSDT", interval: "15m" },
       });
+      const historyLiquidation = await axios.get(
+        "https://api.nickyicet.com/api/history-liquidation"
+      );
+      let historyData = [];
+      if (historyLiquidation.data) {
+        historyLiquidation.data.data.map((item) => {
+          const time = new Date(item.date).getTime();
+          historyData.push([
+            time,
+            item.type,
+            item.price,
+            item.liquidation,
+            item.symbol,
+          ]);
+        });
+        console.log("historyData", historyData);
+      }
+
       const transform = (result.data || []).map((item) => {
         return item.splice(0, 6).map((obj) => Number(obj));
       });
@@ -69,14 +87,7 @@ export default {
         onchart: [
           {
             ...this.chart.onchart[0],
-            data: [
-              [
-                1658850600000, // timestamp (then trade occured)
-                1, // state: 0 = idle, 1 = long
-                20753.11, // filled price
-                50,
-              ],
-            ],
+            data: historyData,
           },
         ],
       };

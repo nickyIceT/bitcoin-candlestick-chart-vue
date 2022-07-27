@@ -19,9 +19,9 @@ export default {
 
         if (p[3]) {
           ctx.fillStyle = '#FEFBF6'
-          ctx.font = '16px Arial'
+          ctx.font = '10px Arial'
           ctx.textAlign = 'center'
-          ctx.fillText(`Long +${p[3]}$`, x, y - 25)
+          ctx.fillText(`${p[4]} ${p[3]}k$`, x, y - 25)
         }
       }
     },
