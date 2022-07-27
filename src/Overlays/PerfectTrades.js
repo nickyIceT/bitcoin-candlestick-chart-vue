@@ -9,7 +9,7 @@ export default {
       ctx.lineWidth = 1.5
       ctx.strokeStyle = 'black'
       for (var p of this.$props.data) {
-        ctx.fillStyle = p[1] ? '#3CCF4E' : '#D61C4E'
+        ctx.fillStyle = p[1] ? '#D61C4E' : '#3CCF4E'
         ctx.beginPath()
         let x = layout.t2screen(p[0]) // x - Mapping
         let y = layout.$2screen(p[2]) // y - Mapping
