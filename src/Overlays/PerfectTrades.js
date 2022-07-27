@@ -17,7 +17,7 @@ export default {
         ctx.fill()
         ctx.stroke()
 
-        if (p[3]) {
+        if (p[3] && this.$props.settings.isShowText) {
           ctx.fillStyle = '#FEFBF6'
           ctx.font = '10px Arial'
           ctx.textAlign = 'center'

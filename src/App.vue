@@ -1,15 +1,22 @@
 <template>
-  <trading-vue
-    :data="chart"
-    :width="this.width"
-    :height="this.height"
-    :color-back="colors.colorBack"
-    :overlays="overlays"
-    :color-grid="colors.colorGrid"
-    :color-text="colors.colorText"
-    titleTxt="BTCUSDT"
-  >
-  </trading-vue>
+  <div>
+    <trading-vue
+      :data="chart"
+      :width="this.width"
+      :height="this.height"
+      :color-back="colors.colorBack"
+      :overlays="overlays"
+      :color-grid="colors.colorGrid"
+      :color-text="colors.colorText"
+      titleTxt="BTCUSDT"
+      ref="tradingVue"
+    >
+    </trading-vue>
+    <span class="night-mode">
+      <input type="checkbox" v-model="isShowText" />
+      <label>Show text</label>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -46,6 +53,7 @@ export default {
       width: window.innerWidth,
       height: window.innerHeight,
       night: true,
+      isShowText: false,
       overlays: [PerfectTrades],
     };
   },
@@ -74,7 +82,6 @@ export default {
             item.symbol,
           ]);
         });
-        console.log("historyData", historyData);
       }
 
       const transform = (result.data || []).map((item) => {
@@ -89,6 +96,9 @@ export default {
           {
             ...this.chart.onchart[0],
             data: historyData,
+            settings: {
+              isShowText: this.isShowText,
+            },
           },
         ],
       };
@@ -107,3 +117,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+.night-mode {
+  position: absolute;
+  top: 10px;
+  right: 80px;
+  color: #888;
+  font: 11px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+</style>
