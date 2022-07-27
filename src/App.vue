@@ -56,7 +56,7 @@ export default {
     },
     async getInitialData() {
       const result = await axios.get("https://api.binance.com/api/v3/klines", {
-        params: { symbol: "BTCUSDT", interval: "15m" },
+        params: { symbol: "BTCUSDT", interval: "5m" },
       });
       const historyLiquidation = await axios.get(
         "https://api.nickyicet.com/api/history-liquidation"
@@ -68,7 +68,7 @@ export default {
           historyData.push([
             time,
             item.type,
-            item.price,
+            item.btcPrice,
             item.liquidation,
             item.symbol,
           ]);
